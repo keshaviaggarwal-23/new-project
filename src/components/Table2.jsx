@@ -11,12 +11,12 @@ const Table2=()=>{
 
    
 const [columnDefs,setColumnDefs]=useState([
-        { headerName: 'UserId', field: 'userId',checkboxSelection:'true'  },
-        { headerName: 'ID', field: 'id' ,sortable:'true',filter:'true', },
-        { headerName: 'Title', field: 'title' , filter:'true' },
-        // { headerName: 'Title', field: 'title' },
-        // { headerName: 'Page Count', field: 'pageCount',filter:'true' },
-        // { headerName: 'Description', field: 'shortDescription',sortable:'true',filter:'true' },
+        // { headerName: 'UserId', field: 'userId',checkboxSelection:'true'  },
+        // { headerName: 'ID', field: 'id' ,sortable:'true',filter:'true', },
+        // { headerName: 'Title', field: 'title' , filter:'true' },
+        { headerName: 'Make', field: 'make', filter: true },
+        { headerName: 'Model', field: 'model',filter:'true' ,filter: true},
+        { headerName: 'Price', field: 'price',sortable:'true',filter:true },
         // {headerName:'Body', field:'body'},
         // { headerName: 'State', field: 'State' },
         // { headerName: 'Confirmed', field: 'Confirmed' },
@@ -35,41 +35,56 @@ const [columnDefs,setColumnDefs]=useState([
     //     .catch(err=>console.log(err));
     // }
 
-    const [data,setData]=useState([]);
-    const getData=()=>{
+    const [rowData,setRowData]=useState([]);
+  //   const getData=()=>{
 
-      fetch('https://jsonplaceholder.typicode.com/posts',
-  //  fetch('https://github.com/bvaughn/infinite-list-reflow-examples/blob/master/books.json',
-      {
-        headers : { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'Access-Control-Allow-Origin':'*'
+  //     fetch('https://jsonplaceholder.typicode.com/posts',
+  // //  fetch('https://github.com/bvaughn/infinite-list-reflow-examples/blob/master/books.json',
+  //     {
+  //       headers : { 
+  //         'Content-Type': 'application/json',
+  //         'Accept': 'application/json',
+  //         'Access-Control-Allow-Origin':'*'
 
-         }
-      }
-      )
-        .then(function(response){
-          console.log(response)
-          return response.json();
-        })
-        .then(function(myJson) {
-          console.log(myJson);
-          setData(myJson)
-        }).catch(err=>console.log(err));
+  //        }
+  //     }
+  //     )
+  //       .then(function(response){
+  //         console.log(response)
+  //         return response.json();
+  //       })
+  //       .then(function(myJson) {
+  //         console.log(myJson);
+  //         setData(myJson)
+  //       }).catch(err=>console.log(err));
 
   
+  //   }
+
+
+  //   useEffect(()=>{
+  //     getData()
+  //   },[])
+  const httpRequest = new XMLHttpRequest();
+  const updateData = (data) => {
+    setRowData(data);
+  };
+
+  httpRequest.open(
+    'GET',
+    'https://www.ag-grid.com/example-assets/row-data.json'
+  );
+  httpRequest.send();
+  httpRequest.onreadystatechange = () => {
+    if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+      updateData(JSON.parse(httpRequest.responseText));
     }
-
-
-    useEffect(()=>{
-      getData()
-    },[])
+  };
 
    
  return(
         <div className="ag-theme-alpine-dark"
-            style={{height:500, width:600}}
+            style={{height: 700, width: 550}}
            
             >
                  
@@ -77,7 +92,7 @@ const [columnDefs,setColumnDefs]=useState([
                  rowSelection="multiple"
                  animateRows
                 columnDefs={columnDefs}
-                rowData={data}
+                rowData={rowData}
                 />
 
         </div>

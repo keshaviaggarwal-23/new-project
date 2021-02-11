@@ -18,7 +18,7 @@ export default function DenseAppBar() {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar variant="dense">
+        <Toolbar variant="dense" style={{backgroundColor: '#111340'}}>
           <IconButton edge="start" className={classes.menuButton} color="#e57373" aria-label="menu">
           </IconButton>
           <Typography variant="h6" color="#e57373">

@@ -41,7 +41,9 @@ function a11yProps(index) {
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
+    flexWrap:'wrap',
+    // backgroundColor: theme.palette.background.paper,
+    backgroundColor:'#111340'
   },
 }));
 export default function SimpleTabs() {
@@ -54,13 +56,14 @@ export default function SimpleTabs() {
     <div className={classes.root}>
       <AppBar position="static">
         <Tabs
+        style={{backgroundColor: '#111340'}}
           value={value}
           onChange={handleChange}
           aria-label="simple tabs example"
         >
           <Tab label="Songs" {...a11yProps(0)} />
-          <Tab label="Books" {...a11yProps(1)} />
-          <Tab label="Movies" {...a11yProps(2)} />
+          <Tab label="Cars" {...a11yProps(1)} />
+          <Tab label="Athletes" {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
