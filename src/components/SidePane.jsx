@@ -86,6 +86,7 @@ const SidePane=()=> {
                         className={style.headingColor}
                       >
                         <span>{item.name}</span>
+                        
 
                         <div className={style.countColor}>{item.age}</div>
                       </Typography>

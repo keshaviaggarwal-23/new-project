@@ -8,7 +8,9 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import Table from "./Table";
 import Table2 from "./Table2";
-import Table3 from "./Table3";
+import Table4 from "./Table4";
+import ServerTable from "./ServerTable";
+import Table5 from "./Table5";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
   return (
@@ -20,9 +22,9 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
+        <Box>
           <Typography>{children}</Typography>
-        </Box>
+       </Box>
       )}
     </div>
   );
@@ -43,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     flexWrap:'wrap',
     // backgroundColor: theme.palette.background.paper,
-    backgroundColor:'#111340'
+    backgroundColor:'#ffffff'
   },
 }));
 export default function SimpleTabs() {
@@ -62,8 +64,10 @@ export default function SimpleTabs() {
           aria-label="simple tabs example"
         >
           <Tab label="Songs" {...a11yProps(0)} />
-          <Tab label="Cars" {...a11yProps(1)} />
-          <Tab label="Athletes" {...a11yProps(2)} />
+          <Tab label="Olympics" {...a11yProps(1)} />
+           <Tab label="Athletes" {...a11yProps(2)} />
+           {/* <Tab label="Athletes More" {...a11yProps(3)} /> */}
+         
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
@@ -71,11 +75,15 @@ export default function SimpleTabs() {
         
       </TabPanel>
       <TabPanel  value={value} index={1}>
-        <Table2 />
+        <Table5 />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Table3 />
+        <Table2 />
+       
       </TabPanel>
+      {/* <TabPanel value={value} index={2}>
+        <Table2/>
+      </TabPanel> */}
     </div>
   );
 }
