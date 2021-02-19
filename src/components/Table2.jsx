@@ -1,19 +1,33 @@
 
 import React, { useState } from 'react';
-import { render } from 'react-dom';
 import { AgGridReact, AgGridColumn } from '@ag-grid-community/react';
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 import { MenuModule } from '@ag-grid-enterprise/menu';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
 import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
 import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
 import '@ag-grid-community/core/dist/styles/ag-grid.css';
 import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import SaveIcon from '@material-ui/icons/Save';
+
+const useStyles = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
 
 const Table2 = () => {
+  const classes = useStyles();
   const [gridApi, setGridApi] = useState(null);
   const [gridColumnApi, setGridColumnApi] = useState(null);
   const [rowData, setRowData] = useState(null);
+  const onExportClick=()=>{
+    gridApi.exportDataAsCsv();
+   
+  }
+ 
 
   const onGridReady = (params) => {
     setGridApi(params.api);
@@ -39,14 +53,16 @@ const Table2 = () => {
   return (
     <div style={{ width: '100%', height: '100%' }}>
       <div className="test-container">
-        <div className="test-header">
-          <span className="legend-item ag-row-level-0"></span>
-          <span className="legend-label">
-            Top Level Group (After collapsing)
-          </span>
-          <span className="legend-item ag-row-level-1"></span>
-          <span className="legend-label">Second Level Group</span>
-        </div>
+        <Button
+        variant="contained"
+        color="grey"
+        size="large"
+        className={classes.button}
+        startIcon={<SaveIcon />}
+        onClick={() => onExportClick()}
+      >
+        Export
+      </Button>
         <div
           id="myGrid"
           style={{
@@ -97,6 +113,18 @@ const Table2 = () => {
           </AgGridReact>
         </div>
       </div>
+      <Button
+        variant="contained"
+        color="grey"
+        size="large"
+        className={classes.button}
+        startIcon={<SaveIcon />}
+       
+       
+        onClick={() => onExportClick()}
+      >
+        Export
+      </Button>
     </div>
   );
 };

@@ -39,6 +39,7 @@ const Table4 = () => {
         style={{
           height: '700px',
           width: '780px',
+          zIndex:1000
         }}
         className="ag-theme-alpine-dark"
       >

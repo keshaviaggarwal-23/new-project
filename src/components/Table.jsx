@@ -7,8 +7,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 import { MenuModule } from '@ag-grid-enterprise/menu';
-import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
-import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
 import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
 
 import SaveIcon from '@material-ui/icons/Save';
@@ -67,9 +65,23 @@ const Table = () => {
 
   return (
     <div>
+     
+    <Button
+        variant="contained"
+        color="grey"
+        size="large"
+        className={classes.button}
+        startIcon={<SaveIcon />}
+       
+       
+        onClick={() => onExportClick()}
+      >
+        Export
+      </Button>
+     
       <div
         className="ag-theme-alpine"
-        style={{ height: 700, width: 550 }}
+        style={{ height: 700, width: 780 }}
       >
         <AgGridReact
          modules={[
@@ -95,7 +107,7 @@ const Table = () => {
         groupHideOpenParents={true}
         groupMultiAutoColumn={true}
         animateRows={true}
-        // sideBar={true}
+       
           rowSelection="multiple"
           animateRows
           columnDefs={columnDefs}
@@ -103,23 +115,10 @@ const Table = () => {
           onGridReady={onGridReady}
           pagination={true}
           paginationPageSize={9}
-          enableCharts={true}
+          
         />
       </div>
-      <div style={{textAlign:"center"}}>
-    <Button
-        variant="contained"
-        color="grey"
-        size="small"
-        className={classes.button}
-        startIcon={<SaveIcon />}
-       
-       
-        onClick={() => onExportClick()}
-      >
-        Export
-      </Button>
-      </div>
+     
     </div>
   );
 };

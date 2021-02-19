@@ -4,15 +4,29 @@ import { AgGridReact, AgGridColumn } from '@ag-grid-community/react';
 import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
 import { RowGroupingModule } from '@ag-grid-enterprise/row-grouping';
 import { MenuModule } from '@ag-grid-enterprise/menu';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 import { ColumnsToolPanelModule } from '@ag-grid-enterprise/column-tool-panel';
 import { SetFilterModule } from '@ag-grid-enterprise/set-filter';
 import '@ag-grid-community/core/dist/styles/ag-grid.css';
 import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
+import SaveIcon from '@material-ui/icons/Save';
+
+const useStyles = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
 
 const Table5 = () => {
+  const classes = useStyles();
   const [gridApi, setGridApi] = useState(null);
   const [gridColumnApi, setGridColumnApi] = useState(null);
   const [rowData, setRowData] = useState(null);
+  const onExportClick=()=>{
+    gridApi.exportDataAsCsv();
+   
+  }
 
   const onGridReady = (params) => {
     setGridApi(params.api);
@@ -37,9 +51,21 @@ const Table5 = () => {
 
   return (
     <div style={{ width: '100%', height: '100%' }}>
+       <Button
+        variant="contained"
+        color="grey"
+        size="large"
+        className={classes.button}
+        startIcon={<SaveIcon />}
+       
+       
+        onClick={() => onExportClick()}
+      >
+        Export
+      </Button>
       <div
         id="myGrid"
-        style={{ height: 500, width: 550 }}
+        style={{ height: 700, width: 800 }}
         className="ag-theme-alpine"
       >
         <AgGridReact
@@ -74,6 +100,7 @@ const Table5 = () => {
         
         </AgGridReact>
       </div>
+     
     </div>
   );
 };
