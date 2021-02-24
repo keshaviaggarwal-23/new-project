@@ -11,6 +11,7 @@ import Table2 from "./Table2";
 import Table4 from "./Table4";
 import ServerTable from "./ServerTable";
 import Table5 from "./Table5";
+import Table6 from "./Table6";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -76,7 +77,7 @@ export default function SimpleTabs() {
         
       </TabPanel>
       <TabPanel  value={value} index={1}>
-        <Table5 />
+        <Table6 />
       </TabPanel>
       <TabPanel value={value} index={2}>
         <Table2 />

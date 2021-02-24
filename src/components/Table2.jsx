@@ -12,6 +12,7 @@ import '@ag-grid-community/core/dist/styles/ag-grid.css';
 import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
 import SaveIcon from '@material-ui/icons/Save';
 
+
 const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
@@ -27,6 +28,7 @@ const Table2 = () => {
     gridApi.exportDataAsCsv();
    
   }
+ 
  
 
   const onGridReady = (params) => {
@@ -63,6 +65,7 @@ const Table2 = () => {
       >
         Export
       </Button>
+     
         <div
           id="myGrid"
           style={{
@@ -84,7 +87,7 @@ const Table2 = () => {
               minWidth: 150,
               enableRowGroup: true,
               enablePivot: true,
-              enableValue: true,
+             // enableValue: true,
               filter: true,
               resizable: true,
               sortable: true,
@@ -113,18 +116,7 @@ const Table2 = () => {
           </AgGridReact>
         </div>
       </div>
-      <Button
-        variant="contained"
-        color="grey"
-        size="large"
-        className={classes.button}
-        startIcon={<SaveIcon />}
-       
-       
-        onClick={() => onExportClick()}
-      >
-        Export
-      </Button>
+     
     </div>
   );
 };
