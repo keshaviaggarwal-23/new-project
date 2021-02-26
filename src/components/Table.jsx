@@ -81,7 +81,7 @@ const Table = () => {
      
       <div
         className="ag-theme-alpine"
-        style={{ height: 700, width: 780 }}
+        style={{ height: "700px", width: "590px" }}
       >
         <AgGridReact
          modules={[

@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -12,9 +12,14 @@ import Table4 from "./Table4";
 import ServerTable from "./ServerTable";
 import Table5 from "./Table5";
 import Table6 from "./Table6";
+import { useSelector, useDispatch } from "react-redux";
+import { actions } from "../reducers/gridActions";
+// import {actions} from "../reducers/action/gridAction";
+
+
 
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const { children, value, index, ...other} = props;
   return (
     <div
       role="tabpanel"
@@ -46,15 +51,23 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     flexWrap:'wrap',
-    // backgroundColor: theme.palette.background.paper,
     backgroundColor:'#ffffff'
   },
 }));
 export default function SimpleTabs() {
+  // const index = useSelector((state) => getCurrentViewTabIndex(state));
+  // const allGrids = useSelector((state,gridId) => getGridById(state, gridId));
+  // const dispatch = useDispatch();
+  // const[toggle,setToggle]=useState(false)
+
+  //const tab = mapAllGridsToTabs(allGrids, classes);
   const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const [value, setValue] = useState(0);
+  const handleChange = (e, newValue) => {
+    //dispatch(actions.changeTab(newValue));
+     setValue(newValue);
+
+
   };
   return (
     <div className={classes.root}>
@@ -72,15 +85,15 @@ export default function SimpleTabs() {
          
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
-            <Table />
+      <TabPanel value={value} index={0}  >
+            <Table  id={0}/>
         
       </TabPanel>
       <TabPanel  value={value} index={1}>
-        <Table6 />
+        <Table6 id={1} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <Table2 />
+        <Table2 id={2} />
        
       </TabPanel>
       {/* <TabPanel value={value} index={2}>

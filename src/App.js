@@ -11,6 +11,7 @@ import NavBar from "./components/Navbar";
 import SidePane from "./components/SidePane"
 
 
+
 import Table2 from "./components/Table2";
 const themeLight = createMuiTheme({
   palette: {
@@ -38,19 +39,19 @@ function App() {
       <MuiThemeProvider theme={themeDark}>
     <CssBaseline />
     <NavBar/>
-    {/* <Container> */}
+    <Container>
     <Grid item xs={12} container spacing={3}>
             <Grid item lg={3} xs={12} sm={6} style={{}}>
-               <SidePane/> 
+               {/* <SidePane/>  */}
             </Grid>
             <Grid item lg={6} xs={12} sm={6} style={{paddingTop:"12px"}}>
                 <SimpleTabs/>
             </Grid>
             <Grid item lg={3} xs={12} sm={6} style={{}}>
-                <SidePane/>
+                {/* <SidePane/> */}
             </Grid>
         </Grid>  
-         {/* </Container> */}
+         </Container>
        
     
   

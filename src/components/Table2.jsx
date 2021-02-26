@@ -11,6 +11,10 @@ import { FiltersToolPanelModule } from '@ag-grid-enterprise/filter-tool-panel';
 import '@ag-grid-community/core/dist/styles/ag-grid.css';
 import '@ag-grid-community/core/dist/styles/ag-theme-alpine.css';
 import SaveIcon from '@material-ui/icons/Save';
+import {debounce} from "../helpers/helpers"
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actions } from "../reducers/gridActions";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -70,7 +74,7 @@ const Table2 = () => {
           id="myGrid"
           style={{
             height: '700px',
-            width: '825px',
+            width: '590px',
           }}
           className="ag-theme-alpine"
         >
